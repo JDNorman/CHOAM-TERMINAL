@@ -1,7 +1,7 @@
 {
     "name": "choam-terminal-bot",
     "description": "Welcome to the repo for C.H.O.A.M. TERMINAL Discord bot! This bot is intended to be a helper/utility for Dune: Awakening's community!",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "author": "JDNorman",
     "license": "AGPL-3.0-only",
     "scripts": {
