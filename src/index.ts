@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import {config} from './config';
 import {onInteraction, onReady} from './events';
 import {client, logger} from './handlers';
@@ -17,7 +18,7 @@ async function main() {
              {
                 type: 'info',
              };
-        } 
+        }
     });
 
     // log server kick

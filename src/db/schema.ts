@@ -1,11 +1,12 @@
+/* eslint-disable prettier/prettier */
 import {
-    boolean,
-    integer,
-    json,
-    pgEnum,
-    pgTable,
-    timestamp,
-    varchar,
+  boolean,
+  integer,
+  json,
+  pgEnum,
+  pgTable,
+  timestamp,
+  varchar,
 } from 'drizzle-orm/pg-core';
 
 // soon-to-come api stuffs

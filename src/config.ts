@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import 'dotenv/config';
 require('newrelic');
 import {version} from '../package.json';
@@ -26,11 +27,17 @@ const configObj: Record<string, string| number | undefined> = {
     SUBSCRIBE_FOOTER:
         'Delivered via /subscribe\n' +
         `/discord | v${version} | made by Malamania (@animateobject_)`,
-    //DISCORD_APPLICATION_DIRECTORY:
-    //  '',
-    DISCORD_INVITE: 'https://discord.gg/UjvBfraw',
-    //KOFI_LINK: '',
-    //TOP_GG_LINK: '',
+    DISCORD_APPLICATION_DIRECTORY:
+      '',
+    EREBUS_DISCORD_INVITE:
+        'https://discord.gg/UjvBfraw',
+    TESTING_DISCORD_INVITE:
+        'https://discord.gg/2hdu5hmJQG',
+    KOFI_LINK:
+        'https://ko-fi.com/animateobject_',
+    TOP_GG_LINK:
+        '',
+
 
     // Project info
     VERSION: version,

@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 // eslint-disable-next-line node/no-unpublished-import
 import type {Config} from 'drizzle-kit';
 import * as dotenv from 'dotenv';

@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 module.exports = {
     apps: [
         {
@@ -6,4 +7,5 @@ module.exports = {
             node_args: '-r dotenv/config',
         },
     ],
+// eslint-disable-next-line prettier/prettier
 };

@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import {Client, GatewayIntentBits} from 'discord.js';
 
 // Init new Discord client

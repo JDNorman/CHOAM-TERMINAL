@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import {createCanvas, registerFont} from "canvas";
 
 registerFont('./fonts/Dune_Rise.ttf', {
