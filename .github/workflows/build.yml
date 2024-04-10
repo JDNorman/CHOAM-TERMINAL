@@ -7,6 +7,9 @@ on:
     paths-ignore:
       - 'docs/**'
 
+env:
+  version: 1.0.0
+
 concurrency: cd
 
 jobs:
@@ -52,14 +55,14 @@ jobs:
           package: ./
           git-tag-version: false
         env:
-          version: 0.0.0
+          version: ${{ env.version }}
 
       - name: Docker metadata
         id: metadata
         uses: docker/metadata-action@v4
         with:
           images: |
-            ghcr.io/${{ github.repository_owner }}/choam-terminal-bot
+            ghcr.io/JDNorman/choam-terminal-bot
           tags: |
             type=semver,pattern={{major}},value=${{ env.version }}
             type=semver,pattern={{major}}.{{minor}},value=${{ env.version }}
@@ -86,6 +89,10 @@ jobs:
       - name: Log in to GitHub Container Registry
         run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u $ --password-stdin
 
+      - name: Tag Docker image
+        run: |
+          docker tag ghcr.io/JDNorman/choam-terminal-bot:latest ghcr.io/JDNorman/choam-terminal-bot:${{ env.version }}
+
       - name: Build and push
         id: docker_build
         uses: docker/build-push-action@v3
@@ -94,10 +101,21 @@ jobs:
           file: ./Dockerfile
           builder: ${{ steps.buildx.outputs.name }}
           push: true
-          tags: ${{ steps.metadata.outputs.tags }}
+          tags: ghcr.io/JDNorman/choam-terminal-bot:${{ env.version }}
           labels: ${{ steps.metadata.outputs.labels }}
-          cache-from: type=local,src=/tmp/.buildx-cache
+          cache-from: type=local,src/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
+          load: false
+          no-cache: false
+          pull: false
+          github-token: ***
+        env:
+          version: 0.0.0
+      
+      - name: Move cache
+        run: |
+          rm -rf /tmp/.buildx-cache
+          mv /tmp/.buildx-cache-new /tmp/.buildx-cache
 
       - name: Increment patch version
         uses: anothrNick/github-tag-action@1.36.0
