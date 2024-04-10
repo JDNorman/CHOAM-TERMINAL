@@ -109,7 +109,7 @@ export function subscribeEmbed(
     type: string,
     channel: NewsChannel | TextChannel | PublicThreadChannel
 ) : EmbedBuilder[] {
-    const embeds = [];
+    const embeds: EmbedBuilder[] = [];
     const embed = new EmbedBuilder()
         .setTitle('Success!')
         .setDescription(
@@ -123,11 +123,30 @@ export function subscribeEmbed(
 }
 
 export function subscribeNotifEmbed(type: string): EmbedBuilder[] {
-    const embeds = [];
+    const embeds: EmbedBuilder[] = []; // Explicitly define the type of the array
     const embed = new EmbedBuilder()
         .setAuthor({
             name: 'Dune Imperial Command',
         })
         //.setThumbnail(/*use the imperial command sprite, put it in the sprite for this faction/guild*/)
         //.setColor()
+        .setTitle('Subscription Approved!')
+        .setDescription(
+            `This channel has been subscribed to receive updates for **${type}** events.`
+        )
+        .setFooter({text: SUBSCRIBE_FOOTER})
+        .setColor(EMBED_COLOR as ColorResolvable)
+        .setTimestamp();
+    embeds.push(embed);
+    return embeds;
+}
+
+function drawLoadingBarPerc(percentage: number, barLength: number) {
+    const percMult = percentage / 100;
+    const progress = Math.round(barLength * percMult);
+    const empty = barLength - progress;
+
+    const progressBar = '[`' + '█'.repeat(progress) + ' '.repeat(empty) + '`]';
+
+    return `${progressBar} ${percentage.toFixed(2)}%`;
 }
