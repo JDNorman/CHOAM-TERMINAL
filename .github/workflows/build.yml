@@ -111,4 +111,5 @@ jobs:
       - uses: steebchen/kubectl@v2.0.0
         with:
           config: ${{ secrets.KUBECONFIG }}
-          command: rollout restart deployment/helldivers2-bot-deployment -n=helldivers2
+          command: rollout restart deployment/choam-terminal-deployment -n=choam-terminal
+          version: v1.21.0
